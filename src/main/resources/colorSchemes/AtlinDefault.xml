@@ -1,0 +1,27 @@
+<scheme name="AtlinDefault" version="142" parent_scheme="Default">
+    <attributes>
+        <option name="ATLIN_KEY">
+            <value>
+                <option name="FOREGROUND" value="7B68EE"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ATLIN_VALUE">
+            <value>
+                <option name="FOREGROUND" value="6A8759"/>
+            </value>
+        </option>
+        <option name="ATLIN_SEPARATOR">
+            <value>
+                <option name="BACKGROUND" value="2d4a3e"/>
+                <option name="FOREGROUND" value="2d4a3e"/>
+            </value>
+        </option>
+        <option name="ATLIN_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="808080"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+    </attributes>
+</scheme>

@@ -1,0 +1,103 @@
+<idea-plugin>
+    <id>com.herminal.atlin.plugin</id>
+    <name>Atlin Language Support</name>
+    <version>1.3.0</version>
+    <vendor email="elsiomcoder@gmail.com" url="https://github.com/nabeghe">Hadi Akbarzadeh</vendor>
+
+    <description>
+        <![CDATA[
+        <p>
+          Full language support for the <b>Atlin</b> (<code>.atlin</code>) key-value data format
+          inside JetBrains IDEs (PhpStorm, IntelliJ IDEA, and others).
+        </p>
+
+        <p>
+          Atlin is a minimal, human-friendly data format for key-value content.<br/>
+          Learn more: <a href="https://medium.com/p/8e071ae3af21">Atlin Format — Official Article</a><br/>
+          Source code: <a href="https://github.com/nabeghe/atlin-jetbrains-plugin">GitHub Repository</a>
+        </p>
+
+        <h3>Features</h3>
+        <ul>
+          <li><b>Syntax Highlighting</b> — Keys, values, and comments are highlighted with distinct colors.</li>
+          <li><b>Separator Highlighting</b> — Blank lines before keys get a background color to visually separate entries.</li>
+          <li><b>Multiline Values</b> — Values spanning multiple lines are fully supported, including Emoji.</li>
+          <li><b>Configurable Key Prefix</b> — Default prefix is <code>@</code>, but you can change it to any character (e.g. <code>|</code>) via Settings.</li>
+          <li><b>Code Folding</b> — Multiline values can be folded and unfolded in the editor.</li>
+          <li><b>Autocomplete</b> — Suggests existing keys from the current file while typing.</li>
+          <li><b>Validation</b> — Shows an error for empty key names and a warning when a key does not start with the configured prefix.</li>
+          <li><b>Customizable Colors</b> — All highlighting colors are configurable via <i>Settings → Editor → Color Scheme → Atlin</i>.</li>
+          <li><b>Bundled Color Schemes</b> — Includes default schemes for both light and Darcula themes.</li>
+        </ul>
+
+        <h3>Atlin Format Overview</h3>
+        <pre>
+        # This is a comment
+
+        @name
+        Hdi Akbarzadeh
+
+        @bio
+        A software developer.
+        Loves clean code.
+
+        @skills
+        PHP, Java, JavaScript
+        </pre>
+
+        <h3>Configuration</h3>
+        <p>
+          Go to <b>Settings → Editor → Atlin</b> to change the key prefix character.<br/>
+          Go to <b>Settings → Editor → Color Scheme → Atlin</b> to customize all highlight colors.
+        </p>
+        ]]>
+    </description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType
+                name="Atlin"
+                implementationClass="com.herminal.atlin.AtlinFileType"
+                fieldName="INSTANCE"
+                language="Atlin"
+                extensions="atlin"/>
+
+        <lang.parserDefinition
+                language="Atlin"
+                implementationClass="com.herminal.atlin.parser.AtlinParserDefinition"/>
+
+        <lang.syntaxHighlighterFactory
+                language="Atlin"
+                implementationClass="com.herminal.atlin.highlight.AtlinSyntaxHighlighterFactory"/>
+
+        <colorSettingsPage
+                implementation="com.herminal.atlin.highlight.AtlinColorSettingsPage"/>
+
+        <lang.foldingBuilder
+                language="Atlin"
+                implementationClass="com.herminal.atlin.AtlinFoldingBuilder"/>
+
+        <completion.contributor
+                language="Atlin"
+                implementationClass="com.herminal.atlin.AtlinCompletionContributor"/>
+
+        <annotator
+                language="Atlin"
+                implementationClass="com.herminal.atlin.AtlinAnnotator"/>
+
+        <applicationService
+                serviceImplementation="com.herminal.atlin.settings.AtlinSettings"/>
+        <applicationConfigurable
+                parentId="editor"
+                instance="com.herminal.atlin.settings.AtlinSettingsConfigurable"
+                id="com.herminal.atlin.settings"
+                displayName="Atlin"/>
+
+        <bundledColorScheme path="/colorSchemes/AtlinDefault"/>
+        <bundledColorScheme path="/colorSchemes/AtlinDarcula"/>
+
+        <editorFactoryListener
+                implementation="com.herminal.atlin.AtlinEditorFactoryListener"/>
+    </extensions>
+</idea-plugin>
