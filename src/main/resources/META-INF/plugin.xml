@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.herminal.atlin.plugin</id>
     <name>Atlin Language Support</name>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
     <vendor email="elsiomcoder@gmail.com" url="https://github.com/nabeghe">Hadi Akbarzadeh</vendor>
 
     <description>
